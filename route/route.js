@@ -8,8 +8,8 @@ router.post('/rahul',function(req,res){
     
 })
 
-router.post("/createAuthor",createAuthor)
-router.post("/creatingPost",creatingPost)
+router.post("/authors",createAuthor)
+router.post("/blogs",creatingPost)
 
 
 
