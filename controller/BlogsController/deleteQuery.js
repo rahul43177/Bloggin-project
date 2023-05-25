@@ -1,21 +1,15 @@
-const { Author_Model } = require("../../Models/authorModel")
 const { Blogs_Model } = require("../../Models/blogsModel")
 
 const deleteUsingQuery = async (req, res) => {
     try {
-        let { category, authorId, tags, subcategory, isPublished } = req.query
-
-        let a = category, b = authorId, c = tags, d = subcategory, e = isPublished
-
-
-        let x = await Blogs_Model.findAndUpdate({ $and: [{ category: a },
-             { authorId: b }, { tags: c }, { subcategory: d }, { isPublished: e }] },{$set:{isDeleted:true}},{new:true})
-        if (x.length == 0) return res.status(404).send({ status: false, message: "" })
-        console.log(x)
-        res.status(200).send({ status: true, message: x })   
+        let deta=req.query
+        // if(!deta)return res.status(400).send("errer in query")
+        let beta=await Blogs_Model.findOne({$and:[deta,{isDeleted:true}]})
+        if(beta) return res.status(400).send({status:false,message:"all ready deleted"})
+        let data = await Blogs_Model.findOneAndUpdate(deta,{$set:{isDeleted:true}},{new:true})
+        if (data) return res.status(200).send({ status: true, message: "deleted" })
     } catch (err) {
-        res.status(200).send({ status: false, message: "client error" })
+        res.status(500).send({ status: false, message: "Delet Using Query error",error:err })
     }       
 }    
 module.exports = { deleteUsingQuery }
-//authorId=646f1ba62b592a5a4b22dd88 &category=travel&subcategory=drama    

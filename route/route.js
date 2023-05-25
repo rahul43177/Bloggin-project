@@ -11,7 +11,7 @@ router.post("/authors",createAuthor)
 router.post("/blogs",creatingPost)
 router.delete("/blogs/:blogId",checkDeletedBlog)
 router.get("/getBlogs",getBlog)
-router.delete("/deleteUsingQuery",deleteUsingQuery)
+router.delete("/blogs",deleteUsingQuery)
 router.put("/blogs/:blogId",updateBlog)
 
 
