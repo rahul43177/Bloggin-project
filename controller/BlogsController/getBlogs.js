@@ -1,4 +1,3 @@
-// const blogModel = require('../../Models/blogsModel')
 const{Blogs_Model}=require("../../Models/blogsModel")
 const getBlog = async function(req,res){
     
