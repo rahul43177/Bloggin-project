@@ -12,7 +12,7 @@ router.post("/blogs",creatingPost)
 router.delete("/blogs/:blogId",checkDeletedBlog)
 router.get("/getBlogs",getBlog)
 router.delete("/deleteUsingQuery",deleteUsingQuery)
-router.patch("/blogs/:blogId",updateBlog)
+router.put("/blogs/:blogId",updateBlog)
 
 
 
