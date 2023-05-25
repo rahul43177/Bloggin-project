@@ -7,8 +7,9 @@ const createAuthor=async (req,res)=>{
           res.status(201).send({status:true,data:create})
           
      } catch (error) {
-          res.status(500).send({staus:false,message:"error in Creating Author"})
+          res.status(500).send({status:false,message:"error in Creating Author"})
           
      }
 }
 module.exports={createAuthor}
+
