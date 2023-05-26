@@ -6,16 +6,21 @@ const createAuthor=async (req,res)=>{
      try { const data=req.body;
           const{fname,lname,title,email ,password }=data
           if(!fname) return res.status(400).send("fname not found")
-          if(!fname.match(/^([...(a-z)])/gi)){
-               return res.status(400).send("error in fname")
-          }
           if(!lname) return res.status(400).send("lname not found")
           if(!title) return res.status(400).send("title not found")
           if(!email) return res.status(400).send("email not found")
+          if(!password) return res.status(400).send("password not found")
+          let str=/^([...(a-z)])/gi
+          if(!fname.match(str)){
+               return res.status(400).send("error in fname")
+          }
+          if(!lname.match(str)){
+               return res.status(400).send("error in lname")
+          }
+          
           if(!email.match(/^([...(a-z)])+([/0-9/])+@([/a-z/]+\.(com|in|org)$)/gi)){
                return res.status(400).send("error in email")
           }
-          if(!password) return res.status(400).send("password not found")
           data.email= email.toLowerCase()
     
           const hasspassword=await hassPassWord(password)
