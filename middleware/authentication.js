@@ -7,7 +7,7 @@ let tokenCheck = async function(req,res,next) {
         if(!token) return res.status(404).send({status : false , error : "access token is not present"})
 
         let decodedToken = jwt.verify(token , process.env.SECRETKEY)
-        if(!decodedToken)  return res.status(401).send({error : "The token is not matching"})
+        if(!decodedToken)  return res.status(401).send({status : false ,error : "The token is not matching"})
 
         next()
     } catch(error) {
