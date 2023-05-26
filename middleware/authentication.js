@@ -1,12 +1,12 @@
 var jwt = require('jsonwebtoken');
-var cookieParser = require('cookie-parser')
 let tokenCheck = async function(req,res,next) {
     try {
-        
-        const token=req.cookies["x-api-key"]
+         let token=req.headers["x-api-key"]
+        //  console.log(token)
         if(!token) return res.status(404).send({status : false , error : "access token is not present"})
-
-        let decodedToken = jwt.verify(token , process.env.SECRETKEY)
+        // console.log(process.env.SECRETKEY)
+        let decodedToken = jwt.verify(token,process.env.SECRETKEY)
+        // console.log(decodedToken)
 
         if(!decodedToken)  return res.status(401).send({status : false ,error : "The token is not matching"})
         // console.log(decodedToken)

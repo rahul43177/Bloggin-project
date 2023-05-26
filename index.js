@@ -4,8 +4,6 @@ const route = require('./route/route')
 const mongoose = require('mongoose')
 require('dotenv').config();
 console.log(process.env.PORT)
-var cookieParser = require('cookie-parser')
-app.use(cookieParser())
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))

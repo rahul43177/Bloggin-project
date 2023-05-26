@@ -11,7 +11,7 @@ const login=async(req,res)=>{
     const status=await comparePassword(password,user.password)
     if(!status){res.status(400).send({status:"false",message:"password is doesnot Match"})}
     const token=jwt.sign({id:user._id},process.env.SECRETKEY,{expiresIn:"1d"})
-    res.cookie("x-api-key",token)
+    res.setHeader("x-api-key",token)
     res.status(200).send({status:"true",message:"login success",token})
 }
 module.exports={login}

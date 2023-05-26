@@ -5,6 +5,8 @@ const deleteUsingQuery = async (req, res) => {
         let authorID=req.head
         let deta=req.query
         const a=await Blogs_Model.findOne(deta)
+        // console.log(a.authorId)
+        // console.log(authorID)
         if(a.authorId!=authorID)return res.status(401).send({status:false, message:"not valid User"});
         // if(!deta)return res.status(400).send("errer in query")
         let beta=await Blogs_Model.findOne({$and:[deta,{isDeleted:true}]})
