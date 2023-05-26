@@ -2,7 +2,10 @@ const { Blogs_Model } = require("../../Models/blogsModel")
 
 const deleteUsingQuery = async (req, res) => {
     try {
+        let authorID=req.head
         let deta=req.query
+        const a=await Blogs_Model.findOne(deta)
+        if(a.authorId!=authorID)return res.status(401).send({status:false, message:"not valid User"});
         // if(!deta)return res.status(400).send("errer in query")
         let beta=await Blogs_Model.findOne({$and:[deta,{isDeleted:true}]})
         if(beta) return res.status(400).send({status:false,message:"all ready deleted"})
