@@ -7,7 +7,8 @@ const authorSchema = new mongoose.Schema({
     },
     lname : { 
         type : String ,
-        required : true
+        required : true,
+        default:" "//need confirmation
     },
     title : { 
         type : String , 
@@ -18,6 +19,7 @@ const authorSchema = new mongoose.Schema({
         type : String ,
         required : true , //use regex for validation  
         unique : true
+        // ,match: /^([...(a-z)])+([/0-9/])+@([/a-z/]+\.(com|in|org)$)/gi
     },
     password : { 
         type : String ,
