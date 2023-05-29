@@ -22,7 +22,6 @@ const createAuthor=async (req,res)=>{
                return res.status(400).send("email format is invalid ")
           }
            const hasspassword=await hassPassWord(password)
-          // console.log(hasspassword)
           let author=await Author_Model.findOne({email:email})
           if(author) return res.status(409).send("email already exist")
           let create= await Author_Model.create({fname,lname,title,email ,password:hasspassword })
