@@ -7,22 +7,19 @@ const updateBlog = async(req,res) =>{
         if(isValidObjectId(blogId)){
         let data = req.body
         let blog = await Blogs_Model.findById(blogId)
-        if(!blog)return res.status(400).send("data not found by id")
+        if(!blog)return res.status(400).send("Blog Not Found")
         let time = new Date()
         let update = await Blogs_Model.findOneAndUpdate(
             {$and : [{_id : blogId} , {isDeleted : false}] } ,
             {$set : data,isPublish:true,publishedAt:time } ,
             {new : true}
             )
-        res.status(200).send({status : true , message : "Blog updated successfully" , data : update})}
+       return res.status(200).send({status : true , message : "Blog updated successfully" , data : update})}
         else return res.status(400).send("object id is not valid")
        
         
         
-    }catch(error) {
-        console.log(error)
-        res.status(500).send({error:"Internal Server Error"})
-    }
+    }catch(error) {res.status(500).send({error:"Internal Server Error"})}
 }
 
 
