@@ -1,3 +1,4 @@
+const { isValidObjectId } = require("mongoose");
 const{Blogs_Model}=require("../../Models/blogsModel")
 const getBlog = async function(req,res){
     
@@ -5,7 +6,9 @@ const getBlog = async function(req,res){
     const filter = {};
     
     if (authorId) {
-      filter.authorId = authorId;
+      if(isValidObjectId(authorId)){
+      filter.authorId = authorId;}
+      else { return res.status(200).send({status:false,message:"no blog of this Author"})}
     }
 
     if (category) {
@@ -21,9 +24,9 @@ const getBlog = async function(req,res){
     }
     let blogData= await Blogs_Model.find(filter,{isDeleted:false},{isPublished:true});
     if(blogData.length>0){
-        res.status(202).send({status:true,message:"Blogs list",data:blogData})
+        res.status(200).send({status:true,message:"Blogs list",data:blogData})
     }else{
-        res.status(204).send({status:false,message:"No blogs with applied filters"})
+        res.status(200).send({status:false,message:"No blogs with applied filters"})
     }
 }
 module.exports={getBlog}
