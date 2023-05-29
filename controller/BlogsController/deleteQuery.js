@@ -7,7 +7,7 @@ const deleteUsingQuery = async (req, res) => {
         const blog=await Blogs_Model.findOne(input)
         if(blog.authorId!=authorID)return res.status(401).send({status:false, message:"not valid User"});
         let deletedBlog=await Blogs_Model.findOne({$and:[input,{isDeleted:true}]})
-        if(deletedBlog) return res.status(204).send({status:false,message:"already deleted"})
+        if(deletedBlog) return res.status(200).send({status:false,message:"already deleted"})
         let data = await Blogs_Model.updateMany(input,{$set:{isDeleted:true}},{new:true})
         if (data) return res.status(200).send({ status: true, message: "deleted" })
     } catch (err) {
