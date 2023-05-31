@@ -1,8 +1,4 @@
-# Technetium
-
-Repository for backend cohort - Technetium
-
-## Blogging Site Mini Project Requirement
+# Blogging Site Mini Project Requirement
 
 ## Phase I
 
