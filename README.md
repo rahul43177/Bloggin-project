@@ -1,20 +1,16 @@
-# Technetium
-
-Repository for backend cohort - Technetium
-
-## Blogging Site Mini Project Requirement
+# Blogging Site Mini Project Requirement
 
 ## Phase I
 
 ### Models
 - Author Model
-
+```
 { fname: { mandatory}, lname: {mandatory}, title: {mandatory, enum[Mr, Mrs, Miss]}, email: {mandatory, valid email, unique}, password: {mandatory} }
-
+```
 - Blogs Model
-
+```
 { title: {mandatory}, body: {mandatory}, authorId: {mandatory, refs to author model}, tags: {array of string}, category: {string, mandatory}, subcategory: {array of string, examples[technology-[web development, mobile development, AI, ML etc]] }, createdAt, updatedAt, deletedAt: {when the document is deleted}, isDeleted: {boolean, default: false}, publishedAt: {when the blog is published}, isPublished: {boolean, default: false}}
-
+```
 
 ### Author APIs /authors
 - Create an author - atleast 5 authors
@@ -88,21 +84,21 @@ Refer below sample
 
 
 ### Successful Response structure
-yaml
+```yaml
 {
   status: true,
   data: {
 
   }
 }
-
+```
 ### Error Response structure
-yaml
+```yaml
 {
   status: false,
   message: ""
 }
-
+```
 
 
 
@@ -111,7 +107,7 @@ yaml
 ## Collections
 
 ### Author 
-yaml
+```yaml
 {
     "status": true,
     "data": {
@@ -126,10 +122,10 @@ yaml
         "__v": 0
     }
 }
-
+```
 
 ### Blogs
-yaml
+```yaml
 {
   status: true,
   data: {
@@ -146,9 +142,9 @@ yaml
         "updatedAt": "2021-09-17T04:25:07.803Z",
         }
 }
-
+```
 ### Get Blogs Response Structure
-yaml
+```yaml
 {
     "status": true,
     "message": "Blogs list",
@@ -187,9 +183,9 @@ yaml
         },
 }]
 
-
+```
 ### Updated Blog Response Structure
-yaml
+```yaml
 {
     "status": true,
     "message": "Blog updated successfully",
@@ -216,18 +212,18 @@ yaml
         "__v": 0
     }
 }
-
+```
 ### Delete Blog Response Structure
-yaml
+```yaml
 {
   status: true,
   message: ""
 }
-
+```
 
 
 ### Successful Login Response structure
-yaml
+```yaml
 {
   status: true,
   data: {
@@ -235,8 +231,7 @@ yaml
 
   }
 }
-
+```
 #### Refer https://jsonplaceholder.typicode.com/guide/ for some fake blogs data.
 
 #### Note: Create a group database and use the same database in connection string by replacing `groupXDatabase
-
